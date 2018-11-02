@@ -1,0 +1,451 @@
+colorHeader = #3438E7
+colorTitulo = #FFFFFF
+colorAzulAguaMarina = #14BABC
+colorAzulAguaMarinaOscuro = #1F9D9F
+colorNaranja = #FE642E
+colorNaranjaOscuro = #FF4000
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/Flaticon.eot");
+  src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/Flaticon.woff") format("woff"),
+       url("../fonts/Flaticon.ttf") format("truetype"),
+       url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   	
+	font-family: Flaticon;
+    font-size: 20px;
+	font-style: normal;
+	margin-left: 20px;
+}
+
+@font-face {
+  font-family: 'icono_estrellita_vacia';
+  src:  url('../fonts/icomoon.eot?n253df');
+  src:  url('../fonts/icomoon.eot?n253df#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?n253df') format('truetype'),
+    url('../fonts/icomoon.woff?n253df') format('woff'),
+    url('../fonts/icomoon.svg?n253df#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'icono_estrellita_llena';
+  src:  url('../fonts/estrellallena.eot?az4rfq');
+  src:  url('../fonts/estrellallena.eot?az4rfq#iefix') format('embedded-opentype'),
+    url('../fonts/estrellallena.ttf?az4rfq') format('truetype'),
+    url('../fonts/estrellallena.woff?az4rfq') format('woff'),
+    url('../fonts/estrellallena.svg?az4rfq#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+				
+.btnPpal
+	
+	background colorNaranja !important 
+	font-family 'Montserrat', sans-serif
+	font-weight bold		
+	transition .5s
+			
+	&:hover
+		background colorNaranjaOscuro
+		color white
+		font-size 17px
+
+body
+	font-family: 'Allerta', sans-serif;
+	
+.headerppal
+	background colorHeader
+	overflow hidden
+	box-shadow 0 8px 10px rgba(0,0,0,0.5)
+	padding-bottom 30px
+	text-align center
+	
+	.titulo
+		color colorTitulo
+		font-size 40px
+		font-family 'Montserrat', sans-serif
+		margin-top 30px
+		margin-bottom 0
+		
+	.titulo-a		
+		color colorTitulo
+		font-size 20px
+		padding-top 5px		
+		padding-bottom 15px
+	
+	.header-logotipo
+		margin-right 5em
+		margin-left 50px
+		margin-top 20px		
+		
+		img	
+			border-right-style solid
+			border-width 2px
+			border-color white
+			border-radius 60%
+			height 140px
+			padding 20px
+			width 140px
+			transition .6s
+			
+			&:hover
+				transform scale(1.2)
+		
+	.header-avatar
+		display none
+		float right
+		margin-top -200px
+		margin-right 50px
+		
+		img
+			border-radius 60%
+			height 80px
+			width 80px
+			transition .6s
+			transform translateY(100px)
+										
+.menu
+	background colorAzulAguaMarina
+	border-left 10px solid white
+	box-shadow 0 8px 10px rgba(0,0,0,0.5)
+	
+	ul
+		margin 0px
+		
+		li 
+			display block
+			line-height 40px
+			transition .6s
+			
+			&:hover
+				background colorAzulAguaMarinaOscuro	
+			
+			a 
+				color colorTitulo
+				text-decoration none
+				padding 0 1em
+				transition .6s
+				
+				&:hover
+					font-size 17px	
+
+.footer
+	
+	height 100%
+	background colorHeader
+	margin 0px
+	
+	.contenedor-footer
+		display flex
+		flex-direction column-reverse		
+		justify-content space-around
+		
+		.formulario-contactenos
+			display flex
+			flex-direction column
+			margin-left 20px
+			
+			.form-col1
+			.form-col2
+				margin-right 30px		
+				color white
+				display flex
+				flex-direction column
+				
+				label					
+				input
+					margin-bottom 10px
+					
+			.form-col1
+				
+				label
+					color white			
+				
+			.form-col1
+				margin-top 10px
+				margin-bottom 10px													
+												
+				.tipos-comentarios
+					display flex
+					flex-direction column					
+					
+					label						
+						font-size 13px
+						
+			.form-col2
+				align-items flex-start
+				
+				label
+					color white
+					margin-bottom 1em
+				
+				textarea
+					margin-bottom 10px
+					height 110px
+						
+		.redesSociales					
+			
+			.realizadopor		
+				padding-top 30px
+				
+			.realizadoclase		
+				padding-bottom 30px
+				
+			p		
+				color colorTitulo
+				text-align center
+				margin 10px
+				
+			.logos-redes
+				
+				text-align center
+				
+				a
+					text-decoration none									
+				
+				.logo-facebook		
+					
+					&:before
+							
+						color colorNaranja					
+						content: "\f101"
+						font-size 30px
+						font-family "Flaticon"
+						
+				.logo-twitter
+					
+					&:before				
+						color colorNaranja					
+						content: "\f102"
+						font-size 30px
+						font-family "Flaticon"							
+						
+				.logo-github
+					
+					&:before				
+						color colorNaranja					
+						content: "\f100"
+						font-size 30px
+						font-family "Flaticon"
+					
+.posts
+		
+	padding 0.8em
+	margin 0px
+	
+	.post
+		
+		background #E6E6E6
+		border 1px solid black
+		box-shadow 10px 9px 25px -1px rgba(0,0,0,0.75)
+		display block
+		margin-bottom 1.5em
+		margin-right 1.5em	
+		width 100%
+		
+		.post-calificacion
+			text-align center
+			padding 0.5em
+						
+			.post-estrellita-vacia
+				
+				text-decoration none
+				
+				&:before
+					color colorNaranja
+					content: "\e9d7"
+					font-family "icono_estrellita_vacia"
+					
+			.post-estrellita-llena
+				
+				text-decoration none
+				
+				&:before
+					color colorNaranja
+					content: "\e9d9"
+					font-family "icono_estrellita_llena"
+		
+		.post-titulo
+			text-align center
+			background #D8D8D8
+			font-family 'Montserrat', sans-serif
+			padding 0.5em
+			
+		.post-video
+			text-align center
+			padding 0 0.5em
+			
+			iframe
+				width 100%
+				height 300px
+			
+		.post-descripcion
+			text-align center			
+			background #D8D8D8
+			font-family: 'Allerta', sans-serif;
+			padding 0.5em
+			font-size 17px
+			
+		.post-footer
+			background colorAzulAguaMarina
+			
+			.post-footer-autor
+				text-align right
+				font-size 17px
+				font-weight bold
+				padding-bottom 1em
+				padding-right 2em
+				padding-top 1em
+				
+
+.modal-registro
+	width 80% !important
+	height 80% !important
+
+.registro-bienvenida
+	text-align center
+	margin-bottom 1em
+	width 100%
+	
+	h4
+		color colorHeader
+		font-size 1.5em
+		font-family 'Montserrat', sans-serif
+		font-weight bold
+		margin-bottom 0.5em
+		
+	.registro-bienvenida-texto		
+		margin-bottom 1em
+		font-size 1em
+		text-align left
+		
+	span		
+		color colorNaranja
+		font-size 1.2em
+		font-weight bold
+		
+.registro-formulario	
+	
+	div
+		margin 0
+			
+	label
+		color colorHeader
+		font-size 1em			
+			
+	a
+		margin-top 2em
+		background colorHeader !important
+		text-align center
+	
+.registro-iconos-redes
+	
+	text-align center
+	
+	.logo-facebook		
+					
+		&:before
+							
+			color colorNaranja					
+			content: "\f101"
+			font-size 40px
+			font-family "Flaticon"
+						
+	.logo-twitter
+		
+		margin-left 2em
+					
+		&:before				
+			color colorNaranja					
+			content: "\f102"
+			font-size 40px
+			font-family "Flaticon"						
+				
+@media screen and (min-width: 768px)
+
+	.headerppal
+		text-align left
+		
+		.header-logotipo
+			float left
+			
+		.header-avatar
+			display inline-block
+
+	.menu
+		
+		ul
+			height 40px
+			
+			li
+				display inline-block
+		
+	.posts		
+		.post
+			display inline-block
+			margin-top 25px
+			width 47%
+			
+			.post-descripcion
+				height 120px
+			
+	.footer
+	
+		.contenedor-footer
+			display flex
+			flex-direction row		
+			justify-content space-around
+			
+			.formulario-contactenos
+				display flex
+				flex-direction row
+				margin-top 30px
+				
+				.form-col1
+					margin-top 0
+					margin-bottom 0													
+												
+					.tipos-comentarios
+						display flex
+						flex-direction row					
+
+			.redesSociales
+				margin-top 40px
+				margin-bottom 45px
+				padding-right 3em
+				border-right 3px solid white
+
+	
+	.registro-bienvenida
+		text-align left
+		
+		h4
+			margin-bottom 1em
+			font-size 2em
+		
+		.registro-bienvenida-texto		
+			margin-bottom 2em
+			font-size 1.5em
+		
+		span		
+			font-size 1.5em
+		
+	.modal-registro
+		width 70% !important
+		height 60% !important
