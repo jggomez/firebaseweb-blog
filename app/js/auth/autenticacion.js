@@ -1,10 +1,6 @@
 $(() => {
 
-    class Autenticacion {
-
-        constructor() {
-
-        }        
+    class Autenticacion {    
 
         authEmailPass() {
 
