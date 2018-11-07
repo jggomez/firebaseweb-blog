@@ -22,7 +22,7 @@
         </figure>
         <h2 class="titulo">VideoBlog Geek</h2>
         <h3 class="titulo-a">Encuentra los Videos mas poderosos de los geeks</h2>
-            <a href="#modal1" class="modal-trigger waves-effect waves-light btn btnPpal">Inicia Sesión</a>
+            <a id="btnInicioSesion" class="modal-trigger waves-effect waves-light btn btnPpal">Iniciar Sesión</a>
             <figure class="header-avatar">
                 <img id="avatar" src="imagenes/usuario.png" alt="Avatar">
             </figure>
@@ -120,7 +120,7 @@
     </footer>
 
     <!-- Modal de registro -->
-    <div id="modal1" class="modal modal-registro">
+    <div id="modalRegistro" class="modal modal-registro">
         <div class="modal-content">
             <div class="container">
                 <div class="row">
@@ -211,6 +211,9 @@
 
 <!-- add Firebase - Auth -->
 <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+
+<!-- add Firebase - Storage -->
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-storage.js"></script>
 
 <!--build:js js/main.min.js -->
 <script type="text/javascript" src="js/config/ConfigFirebase.js"></script>
