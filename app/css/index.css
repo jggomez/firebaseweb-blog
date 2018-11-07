@@ -332,6 +332,14 @@ label
   font-size: 40px;
   font-family: "Flaticon";
 }
+#btnUploadFile {
+  background: #3438e7 !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  transition: 0.5s;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
 @media screen and (min-width: 768px) {
   .headerppal {
     text-align: left;
@@ -396,6 +404,6 @@ label
   }
   .modal-registro {
     width: 70% !important;
-    height: 60% !important;
+    height: 80% !important;
   }
 }

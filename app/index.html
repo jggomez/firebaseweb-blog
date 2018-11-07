@@ -22,21 +22,21 @@
         </figure>
         <h2 class="titulo">VideoBlog Geek</h2>
         <h3 class="titulo-a">Encuentra los Videos mas poderosos de los geeks</h2>
-            <a href="#modal1" class="modal-trigger waves-effect waves-light btn btnPpal">Registrate!!</a>
+            <a href="#modal1" class="modal-trigger waves-effect waves-light btn btnPpal">Inicia Sesión</a>
             <figure class="header-avatar">
                 <img id="avatar" src="imagenes/usuario.png" alt="Avatar">
             </figure>
     </header>
     <nav class="menu">
         <ul>
-            <li><a href="index.html">Todos los Posts</a></li>
-            <li><a href="#">Mis Posts</a></li>
-            <li><a href="#modalPost">Realiza un Post</a></li>
+            <li><a id="btnTodoPost">Todos los Posts</a></li>
+            <li><a id="btnMisPost">Mis Posts</a></li>
+            <li><a id="btnModalPost">Realiza un Post</a></li>
             <li><a href="index.html#footer">Contactenos</a></li>
         </ul>
     </nav>
-    <section class="posts">
-        <article class="post">
+    <section class="posts" id="posts">
+        <!--article class="post">
             <div class="post-titulo">
                 <h5>Cloud Functions en Firebase</h5>
             </div>
@@ -61,34 +61,8 @@
                     Autor: Juan Guillermo
                 </div>
             </div>
-        </article>
+        </article-->
 
-        <article class="post">
-            <div class="post-titulo">
-                <h5>MVP en Android</h5>
-            </div>
-            <div class="post-calificacion">
-                <a class="post-estrellita-llena" href="*"></a>
-                <a class="post-estrellita-llena" href="*"></a>
-                <a class="post-estrellita-llena" href="*"></a>
-                <a class="post-estrellita-vacia" href="*"></a>
-                <a class="post-estrellita-vacia" href="*"></a>
-            </div>
-            <div class="post-video">
-                <iframe type="text/html" width="500" height="385" src='https://www.youtube.com/embed/bnwbwkmBzsM?autoplay=0&controls=2&showinfo=1'
-                    frameborder="0"></iframe>
-                </figure>
-            </div>
-            <div class="post-descripcion">
-                <p>MVP (Model View Presenter) pattern is a derivative from the well known MVC (Model View Controller),
-                    which for a while now is gaining importance in the development of Android applications.</p>
-            </div>
-            <div class="post-footer">
-                <div class="post-footer-autor">
-                    Autor: Juan Guillermo
-                </div>
-            </div>
-        </article>
     </section>
     <footer class="footer" id="footer">
 
@@ -183,7 +157,7 @@
         </div>
     </div>
 
-    <!-- Modal Structure -->
+    <!-- Modal Post -->
     <div id="modalPost" class="modal modal-registro">
         <div class="modal-content">
             <div class="container">
@@ -205,12 +179,15 @@
                             <label for="descripcionNewPost">Descripción:</label>
                         </div>
                         <div class="input-field">
-                            <input id="imagenNewPost" type="text" />
-                            <label for="imagenNewPost">Imagen del Post:</label>
-                        </div>
-                        <div class="input-field">
                             <input id="linkVideoNewPost" type="text" required />
                             <label for="linkVideoNewPost">Enlace del video:</label>
+                        </div>
+                        <div class="progress-panel">
+                            <label for="btnUploadFile">Imagen:</label>
+                            <input type="file" value="upload" id="btnUploadFile" />
+                            <div class="progress">
+                                <div class="determinate" style="width: 0%"></div>
+                            </div>
                         </div>
                         <a id="btnRegistroPost" class="btn waves-effect waves-light">Crear Post<i class="material-icons right">send</i></a>
                     </div>
@@ -226,12 +203,21 @@
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<!-- add Firebase ppal -->
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+
+<!-- add Firebase - Firestore -->
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+
+<!-- add Firebase - Auth -->
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
 
 <!--build:js js/main.min.js -->
 <script type="text/javascript" src="js/config/ConfigFirebase.js"></script>
+<script type="text/javascript" src="js/post/post.js"></script>
 <script type="text/javascript" src="js/general.js"></script>
 <script type="text/javascript" src="js/auth/autenticacion.js"></script>
+<script type="text/javascript" src="js/post/postController.js"></script>
 
 
 <!-- endbuild -->
