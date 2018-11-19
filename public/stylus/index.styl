@@ -1,9 +1,8 @@
-colorHeader = #3438E7
-colorTitulo = #FFFFFF
-colorAzulAguaMarina = #14BABC
-colorAzulAguaMarinaOscuro = #1F9D9F
-colorNaranja = #FE642E
-colorNaranjaOscuro = #FF4000
+colorPrimario = #126798
+colorBlanco = #FFFFFF
+colorAzulAguaMarina = #219cca
+colorAccent = #7acc2d
+colorGris = #eeeeee
 
 @font-face {
   font-family: "Flaticon";
@@ -53,16 +52,27 @@ colorNaranjaOscuro = #FF4000
   font-style: normal;
 }
 
+@font-face {
+      font-family: 'googleicon';
+      src: url('../fonts/googleicon.eot?9927647');
+      src: url('../fonts/googleicon.eot?9927647#iefix') format('embedded-opentype'),
+           url('../fonts/googleicon.woff?9927647') format('woff'),
+           url('../fonts/googleicon.ttf?9927647') format('truetype'),
+           url('../fonts/googleicon.svg?9927647#googleicon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+
 				
 .btnPpal
 	
-	background colorNaranja !important 
+	background colorAccent !important 
 	font-family 'Montserrat', sans-serif
 	font-weight bold		
 	transition .5s
 			
 	&:hover
-		background colorNaranjaOscuro
+		background colorAccent
 		color white
 		font-size 17px
 
@@ -70,21 +80,21 @@ body
 	font-family: 'Allerta', sans-serif;
 	
 .headerppal
-	background colorHeader
+	background colorPrimario
 	overflow hidden
 	box-shadow 0 8px 10px rgba(0,0,0,0.5)
 	padding-bottom 30px
 	text-align center
 	
 	.titulo
-		color colorTitulo
+		color colorBlanco
 		font-size 40px
 		font-family 'Montserrat', sans-serif
 		margin-top 30px
 		margin-bottom 0
 		
 	.titulo-a		
-		color colorTitulo
+		color colorBlanco
 		font-size 20px
 		padding-top 5px		
 		padding-bottom 15px
@@ -134,10 +144,10 @@ body
 			transition .6s
 			
 			&:hover
-				background colorAzulAguaMarinaOscuro	
+				background colorPrimario	
 			
 			a 
-				color colorTitulo
+				color colorBlanco
 				text-decoration none
 				padding 0 1em
 				transition .6s
@@ -148,7 +158,7 @@ body
 .footer
 	
 	height 100%
-	background colorHeader
+	background colorPrimario
 	margin 0px
 	
 	.contenedor-footer
@@ -208,7 +218,7 @@ body
 				padding-bottom 30px
 				
 			p		
-				color colorTitulo
+				color colorBlanco
 				text-align center
 				margin 10px
 				
@@ -223,7 +233,7 @@ body
 					
 					&:before
 							
-						color colorNaranja					
+						color colorAccent					
 						content: "\f101"
 						font-size 30px
 						font-family "Flaticon"
@@ -231,7 +241,7 @@ body
 				.logo-twitter
 					
 					&:before				
-						color colorNaranja					
+						color colorAccent					
 						content: "\f102"
 						font-size 30px
 						font-family "Flaticon"							
@@ -239,7 +249,7 @@ body
 				.logo-github
 					
 					&:before				
-						color colorNaranja					
+						color colorAccent					
 						content: "\f100"
 						font-size 30px
 						font-family "Flaticon"
@@ -248,10 +258,11 @@ body
 		
 	padding 0.8em
 	margin 0px
+	text-align center
 	
 	.post
 		
-		background #E6E6E6
+		background colorBlanco
 		border 1px solid black
 		box-shadow 10px 9px 25px -1px rgba(0,0,0,0.75)
 		display block
@@ -268,7 +279,7 @@ body
 				text-decoration none
 				
 				&:before
-					color colorNaranja
+					color colorAccent
 					content: "\e9d7"
 					font-family "icono_estrellita_vacia"
 					
@@ -277,13 +288,13 @@ body
 				text-decoration none
 				
 				&:before
-					color colorNaranja
+					color colorAccent
 					content: "\e9d9"
 					font-family "icono_estrellita_llena"
 		
 		.post-titulo
 			text-align center
-			background #D8D8D8
+			background colorGris
 			font-family 'Montserrat', sans-serif			
 			padding 0.5em
 
@@ -304,44 +315,42 @@ body
 			
 		.post-descripcion
 			text-align center			
-			background #D8D8D8	
+			background colorGris	
 			font-family: 'Allerta', sans-serif;
 			padding 0.5em
 			font-size 17px
 
 		.post-videolink
 			text-align center 			
-			background colorAzulAguaMarina			
-			font-family: 'Allerta', sans-serif;
+			background colorPrimario	
+			color colorBlanco	
+			font-family 'Allerta', sans-serif
 			padding 0.5em
 			font-size 17px
 
 			a
-				color black
-				text-decoration  underline black; 
+				color colorBlanco
+				text-decoration  underline 
 			
 		.post-footer
-			background colorAzulAguaMarina
-			
-			.post-footer-autor
-				text-align right
-				font-size 17px
-				font-weight bold
-				padding-bottom 1em
-				padding-right 2em
-				padding-top 1em				
+			background colorPrimario			
+			color colorBlanco				
+			font-size 17px
+			padding-bottom 0.5em			
+			padding-top 1em
+			padding-left 0.5em
+			text-align left
+			width 100%			
 
 .modal-registro
 	width 80% !important
-	height 80% !important
 
 .registro-bienvenida
 	text-align center
-	margin-bottom 1em
-	width 100%
+	width 100%		
 	
 	h4
-		color colorHeader
+		color colorPrimario
 		font-size 1.5em
 		font-family 'Montserrat', sans-serif
 		font-weight bold
@@ -353,49 +362,89 @@ body
 		text-align left
 		
 	span		
-		color colorNaranja
+		color colorAccent
 		font-size 1.2em
 		font-weight bold
 		
-.registro-formulario	
+.registro-formulario		
+
+	border-left 0.3em solid colorPrimario
 	
 	div
 		margin 0
 			
 	label
-		color colorHeader
+		color colorPrimario
 		font-size 1em			
 			
 	a
-		margin-top 2em
-		background colorHeader !important
+		margin-top 2em		
 		text-align center
-	
-.registro-iconos-redes
-	
-	text-align center
-	
-	.logo-facebook		
-					
-		&:before
-							
-			color colorNaranja					
-			content: "\f101"
-			font-size 40px
-			font-family "Flaticon"
-						
-	.logo-twitter
+		width 80% !important
+
+	.div-btnInicioSesion
+		text-align center
+
+		a
+			background colorPrimario !important
+
+	.lbl-ingresar-redes
+		color colorPrimario		
+		font-weight bold
+		padding-top 1em
+		text-align center		
 		
-		margin-left 2em
-					
-		&:before				
-			color colorNaranja					
-			content: "\f102"
-			font-size 40px
-			font-family "Flaticon"			
+	.registro-iconos-redes
+	
+		background colorBlanco !important
+
+		text-align center
+		
+		.logo-facebook		
+						
+			&:before
+								
+				color colorAccent					
+				content: "\f101"
+				font-size 40px
+				font-family "Flaticon"
+
+		.logo-google	
+
+			margin-left 1em	
+						
+			&:before
+								
+				color colorAccent					
+				content: "\f2b3"
+				font-size 45px
+				font-family "googleicon"
+							
+		.logo-twitter
+			
+			margin-left 1em
+						
+			&:before				
+				color colorAccent					
+				content: "\f102"
+				font-size 40px
+				font-family "Flaticon"			
+
+.div-btnRegistrarse
+	text-align center
+	margin-top 2em
+	margin-bottom 0em
+
+	a
+		background colorPrimario !important
+	
+.titulo-posts
+	color colorPrimario
+	font-weight bold
+	text-align center
 
 #btnUploadFile
-	background colorHeader !important 
+	background colorPrimario !important 
 	font-family 'Montserrat', sans-serif
 	font-weight bold		
 	transition .5s
@@ -473,4 +522,3 @@ body
 		
 	.modal-registro
 		width 70% !important
-		height 80% !important

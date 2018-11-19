@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Videos Geeks</title>
+    <title>VideoBlog Geek</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link href="https://fonts.googleapis.com/css?family=Allerta|Montserrat" rel="stylesheet">
     <!-- Compiled and minified CSS -->
@@ -13,6 +13,7 @@
     <!--build:css css/styles.min.css -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <!--endbuild-->
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
@@ -35,34 +36,8 @@
             <li><a href="index.html#footer">Contactenos</a></li>
         </ul>
     </nav>
-    <section class="posts" id="posts">
-        <!--article class="post">
-            <div class="post-titulo">
-                <h5>Cloud Functions en Firebase</h5>
-            </div>
-            <div class="post-calificacion">
-                <a class="post-estrellita-llena" href="*"></a>
-                <a class="post-estrellita-llena" href="*"></a>
-                <a class="post-estrellita-llena" href="*"></a>
-                <a class="post-estrellita-llena" href="*"></a>
-                <a class="post-estrellita-vacia" href="*"></a>
-            </div>
-            <div class="post-video">
-                <iframe type="text/html" width="500" height="385" src='https://www.youtube.com/embed/GNR9El3XWYo?autoplay=0&controls=2&showinfo=1'
-                    frameborder="0"></iframe>
-                </figure>
-            </div>
-            <div class="post-descripcion">
-                <p>However, there are still some cases where server code is needed, such as executing trusted code,
-                    authenticating to a third party API, or running battery intensive operations.</p>
-            </div>
-            <div class="post-footer">
-                <div class="post-footer-autor">
-                    Autor: Juan Guillermo
-                </div>
-            </div>
-        </article-->
-
+    <h4 id="tituloPost" class="titulo-posts">Posts de la Comunidad</h4>
+    <section class="posts" id="posts">        
     </section>
     <footer class="footer" id="footer">
 
@@ -73,8 +48,8 @@
 
             <div class="redesSociales">
                 <!-- Esto es el footer -->
-                <p class="realizadopor"><strong>Pagina diseñada por Juan G.</strong></p>
-                <p class="realizadoclase"><strong>UCC - Ing. de Sistemas 2017</strong></p>
+                <p class="realizadopor"><strong>Developed by Juan G.</strong></p>
+                <p class="realizadoclase"><strong>GDE Firebase</strong></p>
                 <div class="logos-redes">
                     <a class="logo-facebook" target="_blank" href="https://www.facebook.com/jggomez84"></a>
                     <a class="logo-twitter" target="_blank" href="https://twitter.com/jggomezt"></a>
@@ -119,38 +94,78 @@
         </div>
     </footer>
 
+    <!-- Modal de Inicio de Sesión -->
+    <div id="modalSesion" class="modal modal-registro">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6 registro-bienvenida">
+                        <h4>Bienvenido al VideoBlog Geek</h4>
+                        <div class="registro-bienvenida-texto">
+                            Publica, aprende y conecta con otros por medio de videos Geek.
+                        </div>
+                        <span>Empieza Ahora</span>
+                    </div>
+                    <div class="col s12 m6 registro-formulario">
+                        <div class="input-field">                            
+                            <input id="emailSesion" type="email" required/>
+                            <label for="emailSesion">E-mail:</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="passwordSesion" type="password" required />
+                            <label for="passwordSesion">Password:</label>
+                        </div>
+                        <div class="div-btnInicioSesion">
+                            <a id="btnInicioEmail" class="btn waves-effect waves-light">Iniciar Sesión<i class="material-icons right">send</i></a>
+                        </div>           
+                        <div class="lbl-ingresar-redes">
+                            <span>INGRESA CON:</span>
+                        </div>
+                        <div class="registro-iconos-redes">                                          
+                            <a id="authFB" class="logo-facebook" href="#"></a>
+                            <a id="authGoogle" class="logo-google" href="#"></a>
+                            <a id="authTwitter" class="logo-twitter" href="#"></a>
+                        </div> 
+                    </div>
+                    <div class="col s12 m12 div-btnRegistrarse">
+                        <a id="btnRegistrarse" class="btn waves-effect waves-light">Crear una cuenta<i class="material-icons left">account_box</i></a>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal de registro -->
     <div id="modalRegistro" class="modal modal-registro">
         <div class="modal-content">
             <div class="container">
                 <div class="row">
                     <div class="col s12 m6 registro-bienvenida">
-                        <h4>Bienvenido al Blog Geek</h4>
+                        <h4>Bienvenido al VideoBlog Geek</h4>
                         <div class="registro-bienvenida-texto">
                             Publica, aprende y conecta con otros por medio de videos Geek.
                         </div>
-                        <span>Empieza ya!!</span>
+                        <span>Empieza Ahora</span>
                     </div>
                     <div class="col s12 m6 registro-formulario">
                         <div class="input-field">
-                            <input id="nombreContactoReg" type="text" required />
+                            <input id="nombreContactoReg" type="text"  maxlength="50" data-length="50" required />
                             <label for="nombreContactoReg">Nombres:</label>
                         </div>
                         <div class="input-field">
-                            <input id="emailContactoReg" type="email" required />
+                            <input id="emailContactoReg" type="email"  maxlength="50" data-length="50" required />
                             <label for="emailContactoReg">E-mail:</label>
                         </div>
                         <div class="input-field">
-                            <input id="passwordReg" type="password" required />
+                            <input id="passwordReg" type="password"  maxlength="10" data-length="10" required />
                             <label for="passwordReg">Password:</label>
                         </div>
-
-                        <a id="btnRegistroEmail" class="btn waves-effect waves-light pulse">Registrate!! <i class="material-icons right">send</i></a>
+                        <div class="div-btnInicioSesion">
+                            <a id="btnRegistroEmail" class="btn waves-effect waves-light">Registrarse<i class="material-icons left">account_box</i></a>
+                        </div>                        
                     </div>
-                    <div class="col s12 m12 registro-iconos-redes">
-                        <a id="authFB" class="logo-facebook" href="#"></a>
-                        <a id="authGoogle" class="logo-facebook" href="#"></a>
-                        <!--a id="authTwitter" class="logo-twitter" href="#"></a-->
+                    <div class="col s12 m12 div-btnRegistrarse">
+                        <a id="btnIniciarSesion" class="btn waves-effect waves-light">Iniciar Sesión<i class="material-icons right">send</i></a>
                     </div>
                 </div>
             </div>
@@ -167,15 +182,15 @@
                         <div class="registro-bienvenida-texto">
                             Comparte un video interesante para la comunidad
                         </div>
-                        <span>Comparte ya!!</span>
+                        <span>Comparte ahora</span>
                     </div>
                     <div class="col s12 m6 registro-formulario">
                         <div class="input-field">
-                            <input id="tituloNewPost" type="text" required />
+                            <input id="tituloNewPost" type="text" maxlength="30" data-length="30" required />
                             <label for="tituloNewPost">Titulo:</label>
                         </div>
                         <div class="input-field">
-                            <textarea id="descripcionNewPost" type="text" class="materialize-textarea" required></textarea>
+                            <textarea id="descripcionNewPost" type="text"  maxlength="200" data-length="200" class="materialize-textarea" required></textarea>
                             <label for="descripcionNewPost">Descripción:</label>
                         </div>
                         <div class="input-field">
@@ -189,7 +204,9 @@
                                 <div class="determinate" style="width: 0%"></div>
                             </div>
                         </div>
-                        <a id="btnRegistroPost" class="btn waves-effect waves-light">Crear Post<i class="material-icons right">send</i></a>
+                        <div class="div-btnInicioSesion">
+                            <a id="btnRegistroPost" class="btn waves-effect waves-light">Crear Post<i class="material-icons left">create</i></a>
+                        </div>                      
                     </div>
                 </div>
             </div>
@@ -215,11 +232,16 @@
 <!-- add Firebase - Storage -->
 <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-storage.js"></script>
 
+<!-- add Firebase - Messaging -->
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js"></script>
+
 <!--build:js js/main.min.js -->
 <script type="text/javascript" src="js/config/ConfigFirebase.js"></script>
+<script type="text/javascript" src="js/util/util.js"></script>
 <script type="text/javascript" src="js/post/post.js"></script>
 <script type="text/javascript" src="js/general.js"></script>
 <script type="text/javascript" src="js/auth/autenticacion.js"></script>
+<script type="text/javascript" src="js/auth/authController.js"></script>
 <script type="text/javascript" src="js/post/postController.js"></script>
 
 

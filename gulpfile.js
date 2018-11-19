@@ -3,7 +3,6 @@ var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var browserSync = require('browser-sync').create();
 var useref = require('gulp-useref');
-var uglify = require('gulp-uglify');
 var gulpIf = require('gulp-if');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
@@ -26,19 +25,19 @@ gulp.task('stylus', function () {
 gulp.task('browserSync', () => {
 	browserSync.init({
 		server:{
-			baseDir : 'app'
+			baseDir : 'public'
 		}
 	})
 });
 
 gulp.task('watch', ['browserSync', 'stylus'], () => {
-	gulp.watch('app/stylus/*.styl', ['stylus']);
-	gulp.watch('app/*.html', browserSync.reload);
-	gulp.watch('app/js/**/*.js', browserSync.reload);
+	//gulp.watch('app/stylus/*.styl', ['stylus']);
+	gulp.watch('public/*.html', browserSync.reload);
+	gulp.watch('public/**/*.js', browserSync.reload);
 });
 
 gulp.task('default', (callback) => {
-	runSequence(['stylus', 'browserSync', 'watch'],
+	runSequence(['browserSync', 'watch'],
 		callback)
 });
 
