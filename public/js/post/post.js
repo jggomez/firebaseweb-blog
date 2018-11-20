@@ -36,6 +36,7 @@ class Post {
           $('#posts').append(this.obtenerTemplatePostVacio())
         } else {
           querySnapshot.forEach(post => {
+              console.log(post.data())
             let postHtml = this.obtenerPostTemplate(
               post.data().autor,
               post.data().titulo,
@@ -76,6 +77,35 @@ class Post {
           })
         }
       })
+  }
+
+  subirImagenPost (file, uid) {
+    const refStorage = firebase
+      .storage()
+      .ref(`imgsPosts/${uid}/${file.name}`)
+    const task = refStorage.put(file)
+
+    task.on(
+      'state_changed',
+      snapshot => {
+        var porcentaje = snapshot.bytesTransferred / snapshot.totalBytes * 100
+        $('.determinate').attr('style', `width: ${porcentaje}%`)
+      },
+      err => {
+        Materialize.toast(`Error subiendo archivo = > ${err.message}`, 4000)
+      },
+      () => {
+        task.snapshot.ref
+          .getDownloadURL()
+          .then(downloadURL => {
+            console.log(downloadURL)
+            sessionStorage.setItem('imgNewPost', downloadURL)
+          })
+          .catch(err =>
+            Materialize.toast(`Error obteniendo downloadURL = > ${err}`, 4000)
+          )
+      }
+    )
   }
 
   obtenerTemplatePostVacio () {

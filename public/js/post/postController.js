@@ -29,6 +29,8 @@ $(() => {
     const titulo = $('#tituloNewPost').val()
     const descripcion = $('#descripcionNewPost').val()
     const videoLink = $('#linkVideoNewPost').val()
+    console.log('session')
+    console.log(sessionStorage.getItem('imgNewPost'))
     const imagenLink = sessionStorage.getItem('imgNewPost') == 'null'
       ? null
       : sessionStorage.getItem('imgNewPost')
@@ -60,31 +62,7 @@ $(() => {
     }
 
     const file = e.target.files[0]
-    const refStorage = firebase
-      .storage()
-      .ref(`imgsPosts/${user.uid}/${file.name}`)
-    const task = refStorage.put(file)
-
-    task.on(
-      'state_changed',
-      snapshot => {
-        var porcentaje = snapshot.bytesTransferred / snapshot.totalBytes * 100
-        $('.determinate').attr('style', `width: ${porcentaje}%`)
-      },
-      err => {
-        Materialize.toast(`Error subiendo archivo = > ${err.message}`, 4000)
-      },
-      () => {
-        task.snapshot.ref
-          .getDownloadURL()
-          .then(downloadURL => {
-            console.log(downloadURL)
-            sessionStorage.setItem('imgNewPost', downloadURL)
-          })
-          .catch(err =>
-            Materialize.toast(`Error obteniendo downloadURL = > ${err}`, 4000)
-          )
-      }
-    )
+    const post = new Post()
+    post.subirImagenPost(file, user.uid)
   })
 })
