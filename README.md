@@ -1,4 +1,4 @@
-# firebaseweb-blog
+# Blog - Firebase Web
 Proyecto de ejemplo de uso de firebase para la web
 
 - Recuerda crear un directorio config y dentro un archivo javascript con nombre ConfigFirebase el cual contiene las credenciales y demas info para usar firebase.
