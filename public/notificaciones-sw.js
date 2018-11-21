@@ -2,16 +2,16 @@ importScripts('https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js')
 importScripts('https://www.gstatic.com/firebasejs/5.5.8/firebase-messaging.js')
 
 firebase.initializeApp({
+  projectId: 'blogeekplatzi',
   messagingSenderId: '599742887877'
 })
 
 const messaging = firebase.messaging()
 
 messaging.setBackgroundMessageHandler(payload => {
-
-  const tituloNotificacion = 'Nuevo Post ha sido creado.'
+  const tituloNotificacion = 'Ya tenemos un nuevo Post'
   const opcionesNotificacion = {
-    body: 'Hola, ya puedes ver un nuevo video Geek.',
+    body: payload.data.titulo,
     icon: 'icons/icon_new_post.png',
     click_action: 'https://blogeekplatzi.firebaseapp.com'
   }
@@ -21,26 +21,3 @@ messaging.setBackgroundMessageHandler(payload => {
     opcionesNotificacion
   )
 })
-
-messaging
-  .getToken()
-  .then(currentToken => {
-    if (currentToken) {
-      console.log('ID Token disponible.')
-      console.log(currentToken)
-      // sendTokenToServer(currentToken);
-      // updateUIForPushEnabled(currentToken);
-    } else {
-      console.log(
-        'ID Token no disponible. Solicita los permisos para obtener uno.'
-      )
-    }
-  })
-  .catch(err => {
-    console.error(`Un error ocurrio al obtener el token. ${err}`)
-    // showToken('Un error ocurrio al obtener el token. ', err);
-    // setTokenSentToServer(false);
-  })
-
-
-

@@ -2,6 +2,8 @@ $(() => {
   $('.tooltipped').tooltip({ delay: 50 })
   $('.modal').modal()
 
+  firebase.initializeApp(varConfig)
+
   // Adicionar el service worker
   navigator.serviceWorker
     .register('notificaciones-sw.js')
@@ -13,11 +15,9 @@ $(() => {
       console.error(`Error al registrar el Service Worker : ${error}`)
     )
 
-  firebase.initializeApp(varConfig)
-
   const messaging = firebase.messaging()
 
-  // LLave publica
+  // credenciales web
   messaging.usePublicVapidKey(
     'BOfZkXQy0zQhD8YMga2HKrmZM8tHFRTRjAO-nULxzwUcL-l-yZdrO01HzASr7NkmFDVMhDV_J4udyF0gz6bO014'
   )
@@ -26,9 +26,23 @@ $(() => {
   messaging
     .requestPermission()
     .then(() => {
-      console.log('Notification permission granted.')
-      // TODO(developer): Retrieve an Instance ID token for use with FCM.
-      // ...
+      console.log('permiso otorgado')
+      return messaging.getToken()
+    })
+    .then(token => {
+      console.log('token')
+      console.log(token)
+      const db = firebase.firestore()
+      db.settings({ timestampsInSnapshots: true })
+      db
+        .collection('tokens')
+        .doc(token)
+        .set({
+          token: token
+        })
+        .catch(err => {
+          console.error(`Error insertando el token en la BD => ${err}`)
+        })
     })
     .catch(function (err) {
       console.error(`No se dio el permiso para la notificación => ${err}`)
@@ -36,16 +50,29 @@ $(() => {
 
   // Recibir las notificaciones cuando el usuario esta foreground
   messaging.onMessage(payload => {
-    Materialize.toast(`Nuevo Post ha sido creado`, 4000)
+    Materialize.toast(
+      `Ya tenemos un nuevo post. Revísalo se llama ${payload.data.titulo}`,
+      6000
+    )
   })
 
-  // Recibir las notificaciones cuando el usuario esta background
+  // Se obtiene el token cuando este cambia
   messaging.onTokenRefresh(() => {
     messaging
       .getToken()
       .then(refreshedToken => {
         console.log('Token refreshed.')
-        console.log(refreshedToken)
+        const db = firebase.firestore()
+        db.settings({ timestampsInSnapshots: true })
+        db
+          .collection('tokens')
+          .doc(refreshedToken)
+          .add({
+            token: refreshedToken
+          })
+          .catch(err => {
+            console.error(`Error al enviar el token a la BD => ${err}`)
+          })
       })
       .catch(err => {
         console.log(`No es posible recuperar el token actualizado => ${err}`)
@@ -54,7 +81,7 @@ $(() => {
 
   // Inicializa el listening real time
   const post = new Post()
-  post.consultarTodosPost();
+  post.consultarTodosPost()
 
   firebase.auth().onAuthStateChanged(user => {
     if (user) {

@@ -36,14 +36,15 @@ class Post {
           $('#posts').append(this.obtenerTemplatePostVacio())
         } else {
           querySnapshot.forEach(post => {
-              console.log(post.data())
             let postHtml = this.obtenerPostTemplate(
               post.data().autor,
               post.data().titulo,
               post.data().descripcion,
               post.data().videoLink,
               post.data().imagenLink,
-              Utilidad.obtenerFecha(post.data().fecha.toDate())
+              post.data().fecha != null
+                ? Utilidad.obtenerFecha(post.data().fecha.toDate())
+                : null
             )
 
             $('#posts').append(postHtml)
@@ -70,7 +71,9 @@ class Post {
               post.data().descripcion,
               post.data().videoLink,
               post.data().imagenLink,
-              Utilidad.obtenerFecha(post.data().fecha.toDate())
+              post.data().fecha != null
+                ? Utilidad.obtenerFecha(post.data().fecha.toDate())
+                : null
             )
 
             $('#posts').append(postHtml)
@@ -80,9 +83,7 @@ class Post {
   }
 
   subirImagenPost (file, uid) {
-    const refStorage = firebase
-      .storage()
-      .ref(`imgsPosts/${uid}/${file.name}`)
+    const refStorage = firebase.storage().ref(`imgsPosts/${uid}/${file.name}`)
     const task = refStorage.put(file)
 
     task.on(

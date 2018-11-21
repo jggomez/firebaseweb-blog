@@ -29,8 +29,6 @@ $(() => {
     const titulo = $('#tituloNewPost').val()
     const descripcion = $('#descripcionNewPost').val()
     const videoLink = $('#linkVideoNewPost').val()
-    console.log('session')
-    console.log(sessionStorage.getItem('imgNewPost'))
     const imagenLink = sessionStorage.getItem('imgNewPost') == 'null'
       ? null
       : sessionStorage.getItem('imgNewPost')
