@@ -32,12 +32,11 @@ $(() => {
     .then(token => {
       console.log('token')
       console.log(token)
+      sessionStorage.setItem('token', token)
       const db = firebase.firestore()
       db.settings({ timestampsInSnapshots: true })
-      db
-        .collection('tokens')
-        .doc(token)
-        .set({
+      db.collection('tokens')
+        .add({
           token: token
         })
         .catch(err => {
@@ -50,10 +49,17 @@ $(() => {
 
   // Recibir las notificaciones cuando el usuario esta foreground
   messaging.onMessage(payload => {
-    Materialize.toast(
-      `Ya tenemos un nuevo post. Revísalo se llama ${payload.data.titulo}`,
-      6000
-    )
+    if (payload.data.tipo === "" || payload.data.tipo === undefined) {
+      Materialize.toast(
+        `Ya tenemos un nuevo post. Revísalo se llama ${payload.data.titulo}`,
+        6000
+      )
+    } else if (
+      payload.data.tipo === 'notvalidacionimagen' ||
+      payload.data.tipo === 'nottodospostsemana'
+    ) {
+      Materialize.toast(`${payload.data.descripcion}`, 6000)
+    }
   })
 
   // Se obtiene el token cuando este cambia
@@ -62,16 +68,16 @@ $(() => {
       .getToken()
       .then(refreshedToken => {
         console.log('Token refreshed.')
+        sessionStorage.setItem('token', refreshedToken)
         const db = firebase.firestore()
         db.settings({ timestampsInSnapshots: true })
-        db
-          .collection('tokens')
+        db.collection('tokens')
           .doc(refreshedToken)
-          .add({
+          .update({
             token: refreshedToken
           })
           .catch(err => {
-            console.error(`Error al enviar el token a la BD => ${err}`)
+            console.error(`Error al actualizar el token a la BD => ${err}`)
           })
       })
       .catch(err => {

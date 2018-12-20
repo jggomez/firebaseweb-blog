@@ -5,30 +5,24 @@ class Post {
     this.db.settings(settings)
   }
 
-  crearPost (uid, emailUser, titulo, descripcion, imagenLink, videoLink) {
-    return this.db
-      .collection('posts')
-      .add({
-        uid: uid,
-        autor: emailUser,
-        titulo: titulo,
-        descripcion: descripcion,
-        imagenLink: imagenLink,
-        videoLink: videoLink,
-        fecha: firebase.firestore.FieldValue.serverTimestamp()
-      })
-      .then(refDoc => {
-        console.log(`Id del post => ${refDoc.id}`)
-      })
-      .catch(error => {
-        console.error(`Error adicionando doc => ${error}`)
-      })
+  crearPost (uid, emailUser, titulo, descripcion, videoLink, token) {
+    return this.db.collection('posts').add({
+      uid: uid,
+      autor: emailUser,
+      titulo: titulo,
+      descripcion: descripcion,      
+      videoLink: videoLink,
+      fecha: firebase.firestore.FieldValue.serverTimestamp(),
+      token: token,
+      publicado: false
+    })
   }
 
   consultarTodosPost () {
     return this.db
       .collection('posts')
-      .orderBy('fecha', 'asc')
+      .where('publicado', '==', true)
+      .orderBy('fecha', 'desc')
       .orderBy('titulo', 'asc')
       .onSnapshot(querySnapshot => {
         $('#posts').empty()
@@ -56,9 +50,10 @@ class Post {
   consultarPostxUsuario (emailUser) {
     return this.db
       .collection('posts')
-      .orderBy('fecha', 'asc')
+      .orderBy('fecha', 'desc')
       .orderBy('titulo', 'asc')
       .where('autor', '==', emailUser)
+      .where('publicado', '==', true)
       .onSnapshot(querySnapshot => {
         $('#posts').empty()
         if (querySnapshot.empty) {
@@ -82,14 +77,34 @@ class Post {
       })
   }
 
-  subirImagenPost (file, uid) {
-    const refStorage = firebase.storage().ref(`imgsPosts/${uid}/${file.name}`)
+  actualizarImagePost (idPost, imagenLink) {
+    return this.db
+      .collection('posts')
+      .doc(idPost)
+      .update({
+        imagenLink: imagenLink
+      })
+  }
+
+  actualizarEstadoPublicadoPost (idPost) {
+    return this.db
+      .collection('posts')
+      .doc(idPost)
+      .update({
+        publicado: true
+      })
+  }
+
+  subirImagenPost (file, uid, nombreArchivo, idPost) {
+    const refStorage = firebase
+      .storage()
+      .ref(`imgsposts/${uid}/${nombreArchivo}`)
     const task = refStorage.put(file)
 
-    task.on(
+    return task.on(
       'state_changed',
       snapshot => {
-        var porcentaje = snapshot.bytesTransferred / snapshot.totalBytes * 100
+        var porcentaje = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         $('.determinate').attr('style', `width: ${porcentaje}%`)
       },
       err => {
@@ -100,7 +115,9 @@ class Post {
           .getDownloadURL()
           .then(downloadURL => {
             console.log(downloadURL)
-            sessionStorage.setItem('imgNewPost', downloadURL)
+            this.actualizarImagePost(idPost, downloadURL)
+            Materialize.toast(`Post creado correctamente`, 4000)
+            $('.modal').modal('close')
           })
           .catch(err =>
             Materialize.toast(`Error obteniendo downloadURL = > ${err}`, 4000)
